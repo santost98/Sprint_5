@@ -1,4 +1,8 @@
 import pytest
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 from data import TEST_USER
 import locators as loc
 from helpers import wait_for_element
@@ -7,10 +11,6 @@ from urls import REGISTER_URL, LOGIN_URL
 
 @pytest.fixture
 def driver():
-    from selenium import webdriver
-    from selenium.webdriver.chrome.service import Service
-    from webdriver_manager.chrome import ChromeDriverManager
-
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.maximize_window()
